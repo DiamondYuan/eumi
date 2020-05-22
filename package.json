@@ -1,0 +1,8 @@
+{
+  "name": "eumi",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@github.com:DiamondYuan/eumi.git",
+  "author": "DiamondYuan <admin@diamondyuan.com>",
+  "license": "MIT"
+}
