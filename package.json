@@ -1,8 +1,14 @@
 {
   "name": "eumi",
+  "bin": {
+    "eumi": "bin/eumi.js"
+  },
   "version": "0.0.1",
   "main": "index.js",
   "repository": "git@github.com:DiamondYuan/eumi.git",
   "author": "DiamondYuan <admin@diamondyuan.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "father-build": "^1.18.0"
+  }
 }
