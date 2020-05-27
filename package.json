@@ -10,5 +10,11 @@
   "license": "MIT",
   "devDependencies": {
     "father-build": "^1.18.0"
+  },
+  "scripts": {
+    "build": "father-build"
+  },
+  "dependencies": {
+    "common-bin": "^2.8.3"
   }
 }
