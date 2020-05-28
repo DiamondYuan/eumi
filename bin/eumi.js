@@ -1,2 +1,4 @@
 #!/usr/bin/env node
-require("../lib/cli");
+const Program = require("../lib/cli").default;
+
+new Program().start();
