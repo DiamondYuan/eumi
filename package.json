@@ -15,6 +15,7 @@
     "build": "father-build"
   },
   "dependencies": {
-    "common-bin": "^2.8.3"
+    "common-bin": "^2.8.3",
+    "regenerator-runtime": "^0.13.5"
   }
 }
