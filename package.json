@@ -12,6 +12,7 @@
     "father-build": "^1.18.0"
   },
   "scripts": {
+    "dev": "father-build -w",
     "build": "father-build"
   },
   "dependencies": {
