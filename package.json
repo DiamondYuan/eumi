@@ -9,7 +9,9 @@
   "author": "DiamondYuan <admin@diamondyuan.com>",
   "license": "MIT",
   "devDependencies": {
-    "father-build": "^1.18.0"
+    "@types/mz": "^2.7.1",
+    "father-build": "^1.18.0",
+    "prettier": "^2.0.5"
   },
   "scripts": {
     "dev": "father-build -w",
@@ -17,6 +19,7 @@
   },
   "dependencies": {
     "common-bin": "^2.8.3",
+    "mz": "^2.7.0",
     "regenerator-runtime": "^0.13.5"
   }
 }
