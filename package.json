@@ -23,6 +23,7 @@
   "devDependencies": {
     "@types/fs-extra": "^9.0.1",
     "@types/mz": "^2.7.1",
+    "electron": "^9.1.0",
     "father-build": "^1.18.0",
     "prettier": "^2.0.5",
     "umi": "^3.2.8",
