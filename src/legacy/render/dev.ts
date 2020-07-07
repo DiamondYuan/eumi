@@ -1,6 +1,7 @@
-import { chalk, yParser } from '@umijs/utils';
-import { Service } from './ServiceWithBuiltIn';
-import getCwd from './getCwd';
+import "regenerator-runtime/runtime";
+import { chalk, yParser } from "@umijs/utils";
+import { Service } from "./ServiceWithBuiltIn";
+import getCwd from "./getCwd";
 
 const args = yParser(process.argv.slice(2));
 
@@ -11,7 +12,7 @@ const args = yParser(process.argv.slice(2));
       cwd: cwd,
     });
     await service.run({
-      name: 'dev',
+      name: "dev",
       args,
     });
     let closed = false;
@@ -22,7 +23,7 @@ const args = yParser(process.argv.slice(2));
 
       // 退出时触发插件中的onExit事件
       service.applyPlugins({
-        key: 'onExit',
+        key: "onExit",
         type: service.ApplyPluginsType.event,
         args: {
           signal,
@@ -32,11 +33,11 @@ const args = yParser(process.argv.slice(2));
     }
 
     // kill(2) Ctrl-C
-    process.once('SIGINT', () => onSignal('SIGINT'));
+    process.once("SIGINT", () => onSignal("SIGINT"));
     // kill(3) Ctrl-\
-    process.once('SIGQUIT', () => onSignal('SIGQUIT'));
+    process.once("SIGQUIT", () => onSignal("SIGQUIT"));
     // kill(15) default
-    process.once('SIGTERM', () => onSignal('SIGTERM'));
+    process.once("SIGTERM", () => onSignal("SIGTERM"));
   } catch (e) {
     console.error(chalk.red(e.message));
     console.error(e.stack);
