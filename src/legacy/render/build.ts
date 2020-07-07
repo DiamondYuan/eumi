@@ -1,7 +1,8 @@
-import { chalk, yParser } from '@umijs/utils';
-import { Service } from './ServiceWithBuiltIn';
-import getCwd from './getCwd';
-import getPkg from './getPkg';
+import "regenerator-runtime/runtime";
+import { chalk, yParser } from "@umijs/utils";
+import { Service } from "./ServiceWithBuiltIn";
+import getCwd from "./getCwd";
+import getPkg from "./getPkg";
 
 const args = yParser(process.argv.slice(2));
 
@@ -13,7 +14,7 @@ const args = yParser(process.argv.slice(2));
       pkg: getPkg(process.cwd()),
     });
     await service.run({
-      name: 'build',
+      name: "build",
       args,
     });
   } catch (e) {

@@ -2,18 +2,14 @@ import { fork } from "child_process";
 import { build } from "./webpack";
 import * as fs from "fs-extra";
 import { join } from "path";
-process.env.NODE_ENV = "production";
 
-const config = require("../../webpack.config.js");
-
-const distPath = join(__dirname, "../../dist");
 const umiBuild = require.resolve("./render/build");
 
-async function cleanDist() {
+async function cleanDist(distPath: string) {
   const files = await fs.readdir(distPath);
   await Promise.all(
     files.map(async (file: any) => {
-      if (["package.json", ".gitkeep"].includes(file)) {
+      if (["package.json"].includes(file)) {
         return;
       }
       await fs.remove(join(distPath, file));
@@ -21,7 +17,23 @@ async function cleanDist() {
   );
 }
 
-function buildMain() {
+function buildRender(cwd: string) {
+  const rendererEnv = Object.create(process.env);
+  rendererEnv.APP_ROOT = "src/renderer";
+  rendererEnv.NODE_ENV = "production";
+  return new Promise((r) => {
+    const cp = fork(umiBuild, [], {
+      cwd,
+      env: rendererEnv,
+    });
+    cp.on("exit", () => {
+      console.log("exit");
+      r();
+    });
+  });
+}
+
+function buildMain(config: any) {
   return new Promise((r) => {
     build({
       dev: false,
@@ -45,25 +57,10 @@ function buildMain() {
   });
 }
 
-function buildRender() {
-  const rendererEnv = Object.create(process.env);
-  rendererEnv.APP_ROOT = "src/renderer";
-  rendererEnv.NODE_ENV = "production";
-  return new Promise((r) => {
-    const cp = fork(umiBuild, [], {
-      cwd: join(__dirname, "../.."),
-      env: rendererEnv,
-      // silent: true,
-    });
-    cp.on("exit", () => {
-      console.log("exit");
-      r();
-    });
-  });
+export default async function ({ cwd }: { cwd: string }) {
+  process.env.NODE_ENV = "production";
+  const config = require(join(cwd, "webpack.config.js"));
+  const distPath = join(cwd, "dist");
+  await cleanDist(distPath);
+  await Promise.all([buildMain(config), buildRender(cwd)]);
 }
-
-(async () => {
-  await cleanDist();
-  buildMain();
-  await buildRender();
-})();
