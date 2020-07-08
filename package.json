@@ -8,6 +8,9 @@
   "repository": "git@github.com:DiamondYuan/eumi.git",
   "author": "DiamondYuan <admin@diamondyuan.com>",
   "license": "MIT",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "dev": "father-build -w",
     "build": "father-build"
