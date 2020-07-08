@@ -3,7 +3,7 @@
   "bin": {
     "eumi": "bin/eumi.js"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "repository": "git@github.com:DiamondYuan/eumi.git",
   "author": "DiamondYuan <admin@diamondyuan.com>",
