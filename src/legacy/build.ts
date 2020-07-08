@@ -57,9 +57,15 @@ function buildMain(config: any) {
   });
 }
 
-export default async function ({ cwd }: { cwd: string }) {
+export default async function ({
+  cwd,
+  webpackConfig,
+}: {
+  cwd: string;
+  webpackConfig: string;
+}) {
   process.env.NODE_ENV = "production";
-  const config = require(join(cwd, "webpack.config.js"));
+  const config = require(webpackConfig);
   const distPath = join(cwd, "dist");
   await cleanDist(distPath);
   await Promise.all([buildMain(config), buildRender(cwd)]);

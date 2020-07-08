@@ -6,9 +6,6 @@ import { startRender } from "./renderer";
 
 const getPort = require("get-port");
 
-// eslint-disable-next-line no-unused-expressions
-process.env.NODE_ENV === "development";
-
 const mainHMR = require.resolve("./main_hmr");
 
 class ElectronManager {
@@ -21,15 +18,15 @@ class ElectronManager {
   }
 
   start() {
+    const mainEnv = Object.create(process.env);
+    mainEnv.SOCKET_PORT = String(this.port);
+    mainEnv.NODE_ENV = "development";
     const electronProcess = cp.spawn(
       require("electron").toString(),
       [`--require ${mainHMR}`, this.main],
       {
         shell: true,
-        env: {
-          SOCKET_PORT: String(this.port),
-          NO_WINDOW: "true",
-        },
+        env: mainEnv,
       }
     );
     electronProcess.stdout.on("data", (e) => {
@@ -44,6 +41,7 @@ class ElectronManager {
 }
 
 async function start(webpackConfig: string, cwd: string) {
+  process.env.NODE_ENV = "development";
   const config = require(webpackConfig);
   const SOCKET_PORT = await getPort();
   let socket: net.Socket | null;
@@ -80,10 +78,14 @@ async function start(webpackConfig: string, cwd: string) {
       const warnings = statJson.warnings;
       warnings.forEach((message) => console.log(message));
       const { outputPath, assets } = statJson;
-      if (!outputPath || !Array.isArray(assets) || assets.length !== 1) {
+      if (
+        !outputPath ||
+        !Array.isArray(assets) ||
+        !assets.some((o) => o.name.endsWith(".js"))
+      ) {
         return;
       }
-      const assetName = assets[0].name;
+      const assetName = assets.find((o) => o.name.endsWith(".js"))!.name;
       const outputFilePath = path.join(outputPath!, assetName);
       if (!electronManager) {
         electronManager = new ElectronManager({
