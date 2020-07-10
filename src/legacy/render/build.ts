@@ -1,8 +1,8 @@
 import "regenerator-runtime/runtime";
 import { chalk, yParser } from "@umijs/utils";
-import { Service } from "./ServiceWithBuiltIn";
-import getCwd from "./getCwd";
-import getPkg from "./getPkg";
+import { Service } from "umi/lib/ServiceWithBuiltIn";
+import getCwd from "umi/lib/utils/getCwd";
+import getPkg from "umi/lib/utils/getPkg";
 
 const args = yParser(process.argv.slice(2));
 
