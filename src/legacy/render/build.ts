@@ -1,8 +1,8 @@
-import "regenerator-runtime/runtime";
-import { chalk, yParser } from "@umijs/utils";
-import { Service } from "umi/lib/ServiceWithBuiltIn";
-import getCwd from "umi/lib/utils/getCwd";
-import getPkg from "umi/lib/utils/getPkg";
+import 'regenerator-runtime/runtime';
+import { chalk, yParser } from '@umijs/utils';
+import { Service } from 'umi/lib/ServiceWithBuiltIn';
+import getCwd from 'umi/lib/utils/getCwd';
+import getPkg from 'umi/lib/utils/getPkg';
 
 const args = yParser(process.argv.slice(2));
 
@@ -14,7 +14,7 @@ const args = yParser(process.argv.slice(2));
       pkg: getPkg(process.cwd()),
     });
     await service.run({
-      name: "build",
+      name: 'build',
       args,
     });
   } catch (e) {

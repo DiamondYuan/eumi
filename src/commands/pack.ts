@@ -1,8 +1,8 @@
-import BaseCommand from "../baseCommand";
-import Command from "common-bin";
-import { resolve, extname } from "path";
-import { exists, stat } from "mz/fs";
-import compressing from "compressing";
+import BaseCommand from '../baseCommand';
+import Command from 'common-bin';
+import { resolve, extname } from 'path';
+import { exists, stat } from 'mz/fs';
+import compressing from 'compressing';
 
 const CompressDirMap = {
   zip: compressing.zip.compressDir,
@@ -17,7 +17,7 @@ type Packer = (source: string, target: string) => Promise<void>;
 class PackCommand extends BaseCommand {
   constructor(rawArgv: string[]) {
     super(rawArgv);
-    this.usage = "Usage: eumi pack source_dir target_file";
+    this.usage = 'Usage: eumi pack source_dir target_file';
   }
   async _run({ argv, cwd }: Command.Context) {
     const [source_file, target_file] = argv._;
@@ -28,7 +28,7 @@ class PackCommand extends BaseCommand {
     const targetPath = resolve(cwd, String(target_file));
     const exist = await exists(sourcePath);
     if (!exist) {
-      console.log("sourceDir not exist.");
+      console.log('sourceDir not exist.');
       return;
     }
     const ext = extname(targetPath).slice(1);
@@ -40,10 +40,7 @@ class PackCommand extends BaseCommand {
     await packer(sourcePath, targetPath);
   }
 
-  private async packerFactory(
-    source: string,
-    ext: string
-  ): Promise<Packer | null> {
+  private async packerFactory(source: string, ext: string): Promise<Packer | null> {
     const fileStat = await stat(source);
     if (fileStat.isDirectory()) {
       return CompressDirMap[ext];
@@ -51,11 +48,11 @@ class PackCommand extends BaseCommand {
     if (fileStat.isFile()) {
       return CompressFileMap[ext];
     }
-    throw null;
+    return null;
   }
 
   get description() {
-    return "pack source_dir target_file";
+    return 'pack source_dir target_file';
   }
 }
 

@@ -1,8 +1,8 @@
-import "regenerator-runtime/runtime";
-import { chalk, yParser } from "@umijs/utils";
-import { Service } from "umi/lib/ServiceWithBuiltIn";
-import getCwd from "umi/lib/utils/getCwd";
-import getPkg from "umi/lib/utils/getPkg";
+import 'regenerator-runtime/runtime';
+import { chalk, yParser } from '@umijs/utils';
+import { Service } from 'umi/lib/ServiceWithBuiltIn';
+import getCwd from 'umi/lib/utils/getCwd';
+import getPkg from 'umi/lib/utils/getPkg';
 
 const args = yParser(process.argv.slice(2));
 
@@ -12,10 +12,10 @@ const args = yParser(process.argv.slice(2));
     const service = new Service({
       cwd: cwd,
       pkg: getPkg(process.cwd()),
-      plugins: [require.resolve("./reload")],
+      plugins: [require.resolve('./reload')],
     });
     await service.run({
-      name: "dev",
+      name: 'dev',
       args,
     });
     let closed = false;
@@ -26,7 +26,7 @@ const args = yParser(process.argv.slice(2));
 
       // 退出时触发插件中的onExit事件
       service.applyPlugins({
-        key: "onExit",
+        key: 'onExit',
         type: service.ApplyPluginsType.event,
         args: {
           signal,
@@ -36,11 +36,11 @@ const args = yParser(process.argv.slice(2));
     }
 
     // kill(2) Ctrl-C
-    process.once("SIGINT", () => onSignal("SIGINT"));
+    process.once('SIGINT', () => onSignal('SIGINT'));
     // kill(3) Ctrl-\
-    process.once("SIGQUIT", () => onSignal("SIGQUIT"));
+    process.once('SIGQUIT', () => onSignal('SIGQUIT'));
     // kill(15) default
-    process.once("SIGTERM", () => onSignal("SIGTERM"));
+    process.once('SIGTERM', () => onSignal('SIGTERM'));
   } catch (e) {
     console.error(chalk.red(e.message));
     console.error(e.stack);

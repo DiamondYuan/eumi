@@ -1,4 +1,4 @@
-import webpack from "webpack";
+import webpack from 'webpack';
 
 interface BuildConfig {
   dev?: boolean;
