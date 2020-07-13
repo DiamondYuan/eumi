@@ -14,6 +14,7 @@ export function startRender(argv: StartRenderProps) {
   rendererEnv.APP_ROOT = argv.APP_ROOT;
   rendererEnv.PORT = argv.port;
   rendererEnv.BROWSER = argv.BROWSER;
+  rendererEnv.PROGRESS = 'none';
   rendererEnv.NODE_ENV = 'development';
   let renderProgress: ChildProcess;
   function start() {

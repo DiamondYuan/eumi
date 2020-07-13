@@ -1,4 +1,6 @@
-export default (api: any) => {
+import { IApi } from '@umijs/types';
+
+export default (api: IApi) => {
   api.onDevCompileDone(({ isFirstCompile }: { isFirstCompile: boolean }) => {
     if (!isFirstCompile) {
       return;

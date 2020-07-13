@@ -12,6 +12,7 @@ const args = yParser(process.argv.slice(2));
     const service = new Service({
       cwd: cwd,
       pkg: getPkg(process.cwd()),
+      plugins: [require.resolve('./includeCwd')],
     });
     await service.run({
       name: 'build',
