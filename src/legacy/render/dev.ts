@@ -12,7 +12,7 @@ const args = yParser(process.argv.slice(2));
     const service = new Service({
       cwd: cwd,
       pkg: getPkg(process.cwd()),
-      plugins: [require.resolve('./reload'), require.resolve('./includeCwd')],
+      plugins: [require.resolve('./plugins/reload'), require.resolve('./plugins/includeCwd')],
     });
     await service.run({
       name: 'dev',

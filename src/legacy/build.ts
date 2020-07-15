@@ -38,14 +38,14 @@ function buildMain(config: any) {
     build({
       dev: false,
       webpackConfig: config,
-      callback: (err, ee) => {
+      callback: (err, stats) => {
         if (err) {
           console.log(err);
           return;
         }
-        const we = ee.toJson({});
-        if (we.errors) {
-          we.errors.forEach((error) => {
+        const jsonOutput = stats.toJson({});
+        if (jsonOutput.errors) {
+          jsonOutput.errors.forEach((error) => {
             console.log(error);
           });
           return;
