@@ -27,6 +27,7 @@
     "lint-staged"
   ],
   "dependencies": {
+    "address": "^1.1.2",
     "common-bin": "^2.8.3",
     "compressing": "^1.5.1",
     "fs-extra": "^9.0.1",
