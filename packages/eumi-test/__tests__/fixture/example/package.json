@@ -1,0 +1,23 @@
+{
+  "name": "umi-fixture-example",
+  "main": "dist/main.bundle.js",
+  "scripts": {
+    "start": "eumi start",
+    "dev": "eumi dev",
+    "build": "eumi build"
+  },
+  "dependencies": {
+    "@umijs/plugin-antd": "^0.6.0",
+    "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.7.18",
+    "@types/react-dom": "^16.0.11",
+    "babel-eslint": "^10.0.3",
+    "electron": "^9.0.5",
+    "eumi": "../../../../eumi",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.7.2",
+    "umi": "^3.2.9"
+  }
+}

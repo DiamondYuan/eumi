@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "ESNext",
     "moduleResolution": "node",
     "jsx": "preserve",
     "skipLibCheck": true,
@@ -11,7 +11,7 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "suppressImplicitAnyIndexErrors": true,
-    "declaration": true
+    "declaration": false
   },
-  "exclude": ["packages/*/bin", "packages/*/lib", "packages/*/node_modules", "**/*.spec.ts"]
+  "exclude": ["packages/eumi-test/__tests__/fixture", "packages/*/node_modules", "jest.config.js"]
 }

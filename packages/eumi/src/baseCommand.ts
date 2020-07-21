@@ -11,7 +11,7 @@ interface EumiContext extends Command.Context {
 
 abstract class BaseCommand extends Command {
   async run(context: Command.Context) {
-    this._run({
+    await this._run({
       ...context,
       utils,
     });

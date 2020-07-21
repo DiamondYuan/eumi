@@ -4,3 +4,6 @@ lib
 yarn.lock
 .DS_Store
 .vscode
+.umi
+packages/eumi-test/__tests__/fixture/*/dist
+.umi-production
