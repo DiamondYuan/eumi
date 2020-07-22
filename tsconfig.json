@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "ES2018",
     "moduleResolution": "node",
     "jsx": "preserve",
     "skipLibCheck": true,
@@ -13,5 +13,11 @@
     "suppressImplicitAnyIndexErrors": true,
     "declaration": false
   },
-  "exclude": ["packages/eumi-test/__tests__/fixture", "packages/*/node_modules", "jest.config.js"]
+  "exclude": [
+    "packages/eumi-test/__tests__/fixture",
+    "packages/*/node_modules",
+    "packages/*/bin",
+    "jest.config.js",
+    "setupTest.js"
+  ]
 }
