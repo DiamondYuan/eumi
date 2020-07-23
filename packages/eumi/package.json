@@ -9,6 +9,7 @@
   "author": "DiamondYuan <admin@diamondyuan.com>",
   "license": "MIT",
   "files": [
+    "bin",
     "lib"
   ],
   "dependencies": {

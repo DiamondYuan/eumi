@@ -17,6 +17,7 @@
     "packages/eumi-test/__tests__/fixture",
     "packages/*/node_modules",
     "packages/*/bin",
+    "packages/*/lib",
     "jest.config.js",
     "setupTest.js"
   ]
