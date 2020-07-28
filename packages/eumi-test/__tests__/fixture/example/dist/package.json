@@ -1,0 +1,4 @@
+{
+  "name": "umi-fixture-example",
+	"main": "./main.bundle.js"
+}
