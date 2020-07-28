@@ -10,12 +10,22 @@ const fixture = join(__dirname, '__tests__/fixture');
 const example = join(fixture, 'example');
 
 function build(cwd: string) {
-  return new Promise((r) => {
+  return new Promise((r, j) => {
     const cp = spawn('npm run build', {
       shell: true,
       cwd,
     });
-    cp.on('exit', r);
+    let stderr = '';
+    cp.stderr.on('data', (data) => {
+      stderr = stderr + data.toString();
+    });
+    cp.on('exit', (code) => {
+      if (code === 0) {
+        r(0);
+        return;
+      }
+      j(new Error(stderr));
+    });
   });
 }
 
