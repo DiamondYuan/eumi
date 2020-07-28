@@ -1,4 +1,4 @@
-name: CI
+name: test
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - master
 
 jobs:
-  ci:
+  test:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -16,8 +16,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Install Dependencies
-        run: npm install
-      - name: Test
+      - name: Install and build
+        run: |
+          npm install
+          npm run build
+      - name: Run test
         run: |
           npm run test

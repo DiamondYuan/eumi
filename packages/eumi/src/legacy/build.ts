@@ -27,7 +27,6 @@ function buildRender(cwd: string) {
       env: rendererEnv,
     });
     cp.on('exit', () => {
-      console.log('exit');
       r();
     });
   });
