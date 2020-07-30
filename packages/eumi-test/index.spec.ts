@@ -5,6 +5,7 @@ import { existsSync, copy, createReadStream, readJSON, writeJSON } from 'fs-extr
 import getPort from 'get-port';
 import express from 'express';
 import npminstall from 'npminstall';
+import fastRegistry from './fastRegistry';
 
 const fixture = join(__dirname, '__tests__/fixture');
 const example = join(fixture, 'example');
@@ -28,9 +29,7 @@ function build(cwd: string) {
     });
   });
 }
-
 const eumi = join(process.env.CURRENT_EUMI_TMPDIR!, 'eumi.tgz');
-
 let port: number = 0;
 let server: Server;
 beforeAll(async () => {
@@ -70,7 +69,7 @@ async function copyToRandomPath(source: string) {
   };
   await npminstall({
     root: randomPath,
-    registry: 'https://registry.npm.taobao.org',
+    registry: await fastRegistry(),
     console: {
       info: noop,
       error: noop,
