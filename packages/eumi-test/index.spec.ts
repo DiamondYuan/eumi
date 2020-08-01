@@ -64,19 +64,12 @@ async function copyToRandomPath(source: string) {
   await writeJSON(join(randomPath, 'package.json'), json, {
     spaces: 2,
   });
-  const noop = () => {
-    //
-  };
+
   await npminstall({
     root: randomPath,
     registry: await fastRegistry(),
-    console: {
-      info: noop,
-      error: noop,
-      log: noop,
-      warn: noop,
-    },
   });
+  console.log('Install Success');
   return randomPath;
 }
 
