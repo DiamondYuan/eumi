@@ -21,9 +21,12 @@
     "url": "git+https://github.com/DiamondYuan/eumi.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "start": "dumi dev"
   },
   "bugs": {
     "url": "https://github.com/DiamondYuan/eumi/issues"
+  },
+  "devDependencies": {
+    "dumi": "^1.0.34"
   }
 }

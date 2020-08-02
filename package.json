@@ -6,6 +6,7 @@
   "author": "DiamondYuan <admin@diamondyuan.com>",
   "license": "MIT",
   "scripts": {
+    "start": "lerna exec --scope eumi-doc -- \"npm run start\"",
     "test": "jest",
     "postinstall": "lerna bootstrap",
     "dev": "father-build -w",
