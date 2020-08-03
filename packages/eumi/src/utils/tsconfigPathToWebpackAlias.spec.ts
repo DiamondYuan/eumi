@@ -1,5 +1,5 @@
 import tsConfigPathToWebpackAlias from './tsconfigPathToWebpackAlias';
-import { resolve } from 'path';
+import { resolve, join } from 'path';
 
 describe('test tsconfigPathToWebpackAlias', () => {
   const fixture = resolve(__dirname, '../../fixture/tsConfigPathToWebpackAlias');
@@ -9,8 +9,8 @@ describe('test tsconfigPathToWebpackAlias', () => {
       alias[key] = alias[key].replace(fixture, 'root');
     });
     expect(alias).toEqual({
-      '@': 'root/src',
-      common: 'root/src/common',
+      '@': join('root', 'src'),
+      common: join('root', 'src', 'common'),
     });
   });
 
