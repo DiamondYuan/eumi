@@ -9,3 +9,4 @@ packages/eumi-test/__tests__/fixture/*/dist
 .umi-production
 .eumi_test_tmpdir/
 !packages/eumi-test/__tests__/fixture/example/dist
+coverage/
