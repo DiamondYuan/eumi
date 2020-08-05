@@ -1,8 +1,9 @@
-import tsConfigPathToWebpackAlias from './tsconfigPathToWebpackAlias';
+import tsConfigPathToWebpackAlias from '../../../src/utils/tsconfigPathToWebpackAlias';
 import { resolve, join } from 'path';
+import { getFixturePath } from '../../fixture';
 
 describe('test tsconfigPathToWebpackAlias', () => {
-  const fixture = resolve(__dirname, '../../fixture/tsConfigPathToWebpackAlias');
+  const fixture = getFixturePath('tsConfigPathToWebpackAlias');
   it('should get correct alias', async () => {
     const alias = await tsConfigPathToWebpackAlias(resolve(fixture, 'tsconfig.json'));
     Object.keys(alias).forEach((key) => {

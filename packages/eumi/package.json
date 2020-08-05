@@ -19,7 +19,8 @@
     "fs-extra": "^9.0.1",
     "get-port": "^5.1.1",
     "mz": "^2.7.0",
-    "regenerator-runtime": "^0.13.5"
+    "regenerator-runtime": "^0.13.5",
+    "webpack-chain": "^6.5.1"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.1",
