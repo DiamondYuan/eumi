@@ -14,6 +14,7 @@
     "declaration": false
   },
   "exclude": [
+    "coverage",
     "packages/eumi-test/__tests__/fixture",
     "packages/*/node_modules",
     "packages/*/bin",

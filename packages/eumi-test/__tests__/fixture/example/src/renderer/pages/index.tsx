@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Space, Calendar } from 'antd';
+import { HELLO_WORLD } from 'root/common';
 
 export default () => {
   const [data, setData] = useState('');
@@ -14,7 +15,7 @@ export default () => {
     <div style={{ padding: 24, width: 400 }}>
       <Space direction="vertical">
         <Space>
-          <Button type="primary">Hello World</Button>
+          <Button type="primary">{HELLO_WORLD}</Button>
           <Button>Message From Server: {data}</Button>
         </Space>
         <div style={{ width: '100%', border: '1px solid #ccc' }}>

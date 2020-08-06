@@ -2,10 +2,11 @@ import { app, BrowserWindow } from 'electron';
 import http from 'http';
 import path from 'path';
 import url from 'url';
+import { HELLO_WORLD } from 'root/common';
 
 function startServer(message: string) {
   http
-    .createServer(function(_request, response) {
+    .createServer(function (_request, response) {
       response.writeHead(200, {
         'Content-Type': 'text/json',
         'Access-Control-Allow-Origin': '*',
@@ -22,7 +23,7 @@ function startServer(message: string) {
  * 可以试试看，修改 message,页面自动刷新。
  * You can try to modify the message and the page will refresh automatically.
  */
-startServer('Hello World');
+startServer(HELLO_WORLD);
 
 let mainWindow: Electron.BrowserWindow | null;
 async function createWindow(): Promise<void> {
