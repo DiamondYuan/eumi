@@ -1,10 +1,9 @@
-import { spawn } from 'child_process';
+import { spawn, fork } from 'child_process';
 import { join } from 'path';
 import { Server } from 'http';
 import { existsSync, copy, createReadStream, readJSON, writeJSON } from 'fs-extra';
 import getPort from 'get-port';
 import express from 'express';
-import npminstall from 'npminstall';
 import fastRegistry from './fastRegistry';
 
 const fixture = join(__dirname, '__tests__/fixture');
@@ -64,13 +63,21 @@ async function copyToRandomPath(source: string) {
   await writeJSON(join(randomPath, 'package.json'), json, {
     spaces: 2,
   });
-
-  await npminstall({
-    root: randomPath,
-    registry: await fastRegistry(),
+  const registry = await fastRegistry();
+  return new Promise<string>((f, r) => {
+    const install = fork(join(__dirname, 'npminstall.js'), [], { silent: true });
+    install.on('message', ({ type, message }: any) => {
+      if (type === 'DONE') {
+        f(randomPath);
+      } else {
+        r(new Error(message));
+      }
+    });
+    install.send({
+      randomPath,
+      registry,
+    });
   });
-  console.log('Install Success');
-  return randomPath;
 }
 
 describe('test build project', () => {
