@@ -1,0 +1,4 @@
+interface IConfig {
+  main?: {};
+  renderer?: {};
+}
