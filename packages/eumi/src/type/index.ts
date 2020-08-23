@@ -1,4 +1,6 @@
 interface IConfig {
-  main?: {};
+  main?: {
+    configPath?: string;
+  };
   renderer?: {};
 }
