@@ -20,6 +20,8 @@ jobs:
         run: |
           npm install
           npm run build
+        env:
+          NPM_REGISTRY: https://registry.npmjs.org/
       - name: Run test
         run: |
           npm run test

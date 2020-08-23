@@ -63,7 +63,7 @@ async function copyToRandomPath(source: string) {
   await writeJSON(join(randomPath, 'package.json'), json, {
     spaces: 2,
   });
-  const registry = await fastRegistry();
+  const registry = process.env.NPM_REGISTRY || (await fastRegistry());
   return new Promise<string>((f, r) => {
     const install = fork(join(__dirname, 'npminstall.js'), [], { silent: true });
     install.on('message', ({ type, message }: any) => {
