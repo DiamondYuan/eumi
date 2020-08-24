@@ -85,5 +85,5 @@ describe('test build project', () => {
     const randomPath = await copyToRandomPath(example);
     const buildCode = await build(randomPath);
     expect(buildCode).toBe(0);
-  }, 300000);
+  }, 3000000);
 });
