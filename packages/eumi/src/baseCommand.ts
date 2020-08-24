@@ -1,18 +1,17 @@
 import Command from 'common-bin';
 import address from 'address';
 import { exists } from 'mz/fs';
+import { IConfig } from './type';
 
 const utils = {
   address,
 };
 
-interface EumiConfig {}
-
 const CONFIG_FILES = ['.eumirc.js'];
 
-interface EumiContext extends Command.Context {
+export interface EumiContext extends Command.Context {
   utils: typeof utils;
-  config: EumiConfig;
+  config: IConfig;
 }
 
 abstract class BaseCommand extends Command {

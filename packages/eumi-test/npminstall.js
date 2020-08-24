@@ -1,6 +1,5 @@
 const npminstall = require('npminstall');
 process.on('message', async (message) => {
-  console.log({}, message);
   const { randomPath, registry } = message;
   try {
     await npminstall({

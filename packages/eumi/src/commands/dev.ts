@@ -1,11 +1,11 @@
-import BaseCommand from '../baseCommand';
-import Command from 'common-bin';
+import BaseCommand, { EumiContext } from '../baseCommand';
 import start from '../legacy/start';
 import { join } from 'path';
 
 class DevCommand extends BaseCommand {
-  async _run({ cwd }: Command.Context) {
-    const webpackConfig = join(cwd, 'build/webpack.main.config.js');
+  async _run({ cwd, config }: EumiContext) {
+    const mainConfigPath = config?.main?.configPath || 'build/webpack.main.config.js';
+    const webpackConfig = join(cwd, mainConfigPath);
     start(webpackConfig, cwd);
   }
 }

@@ -1,4 +1,4 @@
-interface IConfig {
+export interface IConfig {
   main?: {
     configPath?: string;
   };
